@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chai and Snacks Shop Business Assessment</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Chai and Snacks Shop Business Assessment</h1>
+        <p>Evaluate your business to uncover insights and opportunities.</p>
+    </header>
+
+    <div class="container">
+        <form id="assessment-form">
+            <div class="card">
+                <h2>Qualitative Questions</h2>
+                <label>What inspired you to start this chai and snacks shop? *</label>
+                <textarea name="inspiration" required></textarea>
+
+                <label>How long have you been operating? *</label>
+                <input type="text" name="duration" required />
+
+                <label>What unique offerings do you provide? *</label>
+                <textarea name="uniqueOfferings" required></textarea>
+
+                <label>Who are your primary customers? *</label>
+                <input type="text" name="customers" required />
+
+                <label>What marketing strategies do you use? *</label>
+                <textarea name="marketing" required></textarea>
+
+                <label>What challenges do you face? *</label>
+                <textarea name="challenges" required></textarea>
+
+                <label>How do you gather customer feedback? *</label>
+                <textarea name="feedback" required></textarea>
+
+                <label>What are your future goals for the shop? *</label>
+                <textarea name="futureGoals" required></textarea>
+
+                <label>What sets your shop apart from competitors? *</label>
+                <textarea name="competitiveAdvantage" required></textarea>
+
+                <label>How do you handle customer complaints? *</label>
+                <textarea name="complaints" required></textarea>
+
+                <label>Do you have any partnerships with local suppliers?</label>
+                <textarea name="partnerships"></textarea>
+
+                <label>What seasonal items do you offer?</label>
+                <textarea name="seasonalItems"></textarea>
+            </div>
+
+            <div class="card">
+                <h2>Quantitative Questions</h2>
+                <label>What is your average daily revenue? *</label>
+                <input type="number" name="dailyRevenue" required />
+
+                <label>How many customers do you serve each day? *</label>
+                <input type="number" name="averageCustomers" required />
+
+                <label>What is the average spend per customer? *</label>
+                <input type="number" name="averageSpend" required />
+
+                <label>What are your fixed monthly costs? *</label>
+                <input type="number" name="fixedCosts" required />
+
+                <label>What are your variable monthly costs? *</label>
+                <input type="number" name="variableCosts" required />
+
+                <label>What is your monthly marketing budget? *</label>
+                <input type="number" name="marketingBudget" required />
+
+                <label>What percentage of your revenue comes from regular customers? *</label>
+                <input type="number" name="regularCustomerPercentage" required />
+
+                <label>What is your average order fulfillment time (in minutes)? *</label>
+                <input type="number" name="orderFulfillmentTime" required />
+            </div>
+
+            <button type="submit" class="submit-button">Submit Assessment</button>
+        </form>
+
+        <div id="result" class="hidden"></div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Chai and Snacks Shop Assessment. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
