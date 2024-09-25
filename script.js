@@ -1,24 +1,41 @@
 document.getElementById('assessment-form').addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent form from submitting normally
 
-    // Gather form data
-    const dailyRevenue = parseFloat(event.target.dailyRevenue.value) || 0;
-    const averageCustomers = parseFloat(event.target.averageCustomers.value) || 0;
-    const averageSpend = parseFloat(event.target.averageSpend.value) || 0;
-    const fixedCosts = parseFloat(event.target.fixedCosts.value) || 0;
-    const variableCosts = parseFloat(event.target.variableCosts.value) || 0;
-    const marketingBudget = parseFloat(event.target.marketingBudget.value) || 0;
-    const regularCustomerPercentage = parseFloat(event.target.regularCustomerPercentage.value) || 0;
-    const orderFulfillmentTime = parseFloat(event.target.orderFulfillmentTime.value) || 0;
+    const formData = new FormData(event.target);
+    const data = Object.fromEntries(formData);
+    const email = data.email;
 
-    // Calculate total revenue and expenses
+    // Check for duplicates in local storage
+    let submittedEmails = JSON.parse(localStorage.getItem('submittedEmails')) || [];
+
+    if (submittedEmails.includes(email)) {
+        document.getElementById('duplicate-message').classList.remove('hidden');
+        return; // Stop the function if email is already submitted
+    }
+
+    // Calculate financial details
+    const dailyRevenue = parseFloat(data.dailyRevenue) || 0;
+    const averageCustomers = parseFloat(data.averageCustomers) || 0;
+    const fixedCosts = parseFloat(data.fixedCosts) || 0;
+    const variableCosts = parseFloat(data.variableCosts) || 0;
+    const marketingBudget = parseFloat(data.marketingBudget) || 0;
+
     const totalRevenue = dailyRevenue * averageCustomers;
     const totalExpenses = fixedCosts + variableCosts + marketingBudget;
-
-    // Calculate net income
     const netIncome = totalRevenue - totalExpenses;
 
     // Display the results
+    displayResults(totalRevenue, totalExpenses, netIncome);
+
+    // Store the email to prevent duplicates
+    submittedEmails.push(email);
+    localStorage.setItem('submittedEmails', JSON.stringify(submittedEmails));
+
+    // Reset the form
+    event.target.reset();
+});
+
+function displayResults(totalRevenue, totalExpenses, netIncome) {
     const resultDiv = document.getElementById('result');
     resultDiv.classList.remove('hidden');
     resultDiv.innerHTML = `
@@ -26,10 +43,5 @@ document.getElementById('assessment-form').addEventListener('submit', function(e
         <p><strong>Total Revenue:</strong> ₹${totalRevenue.toFixed(2)}</p>
         <p><strong>Total Expenses:</strong> ₹${totalExpenses.toFixed(2)}</p>
         <p><strong>Net Income:</strong> ₹${netIncome.toFixed(2)}</p>
-        <p><strong>Average Spend per Customer:</strong> ₹${averageSpend.toFixed(2)}</p>
-        <p><strong>Average Order Fulfillment Time:</strong> ${orderFulfillmentTime} minutes</p>
     `;
-    
-    // Reset the form
-    event.target.reset();
-});
+}

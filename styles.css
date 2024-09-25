@@ -59,7 +59,7 @@ label {
     font-weight: bold;
 }
 
-textarea, input[type="text"], input[type="number"] {
+textarea, input[type="text"], input[type="number"], input[type="email"], input[type="tel"] {
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;

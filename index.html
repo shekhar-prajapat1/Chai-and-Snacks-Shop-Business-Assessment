@@ -16,6 +16,18 @@
     <div class="container">
         <form id="assessment-form">
             <div class="card">
+                <h2>Your Details</h2>
+                <label for="name">Name *</label>
+                <input type="text" name="name" required />
+                
+                <label for="email">Email *</label>
+                <input type="email" name="email" required />
+                
+                <label for="contact">Contact Number *</label>
+                <input type="tel" name="contact" required />
+            </div>
+
+            <div class="card">
                 <h2>Qualitative Questions</h2>
                 <label>What inspired you to start this chai and snacks shop? *</label>
                 <textarea name="inspiration" required></textarea>
@@ -82,6 +94,7 @@
             </div>
 
             <button type="submit" class="submit-button">Submit Assessment</button>
+            <div id="duplicate-message" class="hidden" style="color: red;">You have already submitted your assessment.</div>
         </form>
 
         <div id="result" class="hidden"></div>
